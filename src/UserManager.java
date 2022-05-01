@@ -11,15 +11,17 @@ public class UserManager {
 		this.input= input;
 	}
 	
-	public  void addRoutine() {
+	public  void addUser() {
 		int kind = 0;
-		while (kind !=1 && kind !=2) {
+		while (kind !=1 && kind !=4) {
 			User user;	
 		
 		System.out.print("Select User Kind: ");
-		System.out.print("1 for man ");
-		System.out.print("2 for woman ");
-		System.out.print("Select num for Student Kind between 1 and 2: ");
+		System.out.print("1 Man. ");
+		System.out.print("2 Woman. ");
+		System.out.print("3 Young man. ");
+		System.out.print("4 Old man. ");
+		System.out.print("Select num for User Kind between 1 and 4: ");
 		kind = input.nextInt();
 		if (kind==1) { 
 			user = new Man();
@@ -34,15 +36,27 @@ public class UserManager {
 			users.add(user);
 			break;
 		}
+		else if (kind==3) {
+				user = new Man();
+				user.getUserInput(input);
+				users.add(user);
+				break;
+		}
+		else if (kind==4) {
+			user = new Man();
+			user.getUserInput(input);
+			users.add(user);
+			break;
+		}
 		else {
-			System.out.print("Select num for Student Kind between 1 and 2: ");
+			System.out.print("Select num for User Kind between 1 and 4: ");
 		}
 	}
 				
 				
 	}
 	
-	public  void DeleteRoutine() {
+	public  void DeleteUser() {
 	System.out.println("User ID : ");
 	int UserID = input.nextInt();
 	int index = -1;
@@ -55,7 +69,7 @@ public class UserManager {
 	
 	if (index >=0) {
 		users.remove(index);
-		System.out.println("the routine " + UserID + "is deleted"); 		
+		System.out.println("the user " + UserID + "is deleted"); 		
 	}
 	else {
 		System.out.println("the user has not been registered");
@@ -63,7 +77,7 @@ public class UserManager {
 	}
 }
 
-	public  void EditRoutine() {
+	public  void EditUser() {
 	
 	System.out.println("User ID : ");
 	int UserID = input.nextInt();
@@ -109,7 +123,7 @@ public class UserManager {
 	}
 }
 	
-	public  void ViewRoutine() {
+	public  void ViewUser() {
 	
 	System.out.println("# of registered users:" +users.size());
 	for (int i=0; i<users.size(); i++) {
