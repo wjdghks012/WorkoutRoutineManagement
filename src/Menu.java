@@ -11,15 +11,15 @@ public class Menu {
 		
 		while (num !=5) {
 
-	    System.out.println(" ***Routine Management System Menu ***");
+	    System.out.println(" ***PT User Management System Menu ***");
 			
-		System.out.println(" 1. Add Routine");
+		System.out.println(" 1. Add User");
 		
-		System.out.println(" 2. Delete Routine");
+		System.out.println(" 2. Delete User");
 	
-		System.out.println(" 3. Edit Routine");
+		System.out.println(" 3. Edit User");
 		
-		System.out.println(" 4. View Routine ");
+		System.out.println(" 4. View User ");
 	
 		System.out.println(" 5. Exit");
 		
@@ -28,16 +28,16 @@ public class Menu {
 		num = input.nextInt();
 		
 		if (num==1) {
-			userManager.addRoutine();
+			userManager.addUser();
 		}
 		if (num==2) {
-			userManager.DeleteRoutine();
+			userManager.DeleteUser();
 		}
 		if (num==3) {
-			userManager.EditRoutine();
+			userManager.EditUser();
 		}
 		if (num==4) {
-			userManager.ViewRoutine();
+			userManager.ViewUser();
 		}
 		else {
 			continue;
