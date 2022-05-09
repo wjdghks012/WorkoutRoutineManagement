@@ -2,7 +2,10 @@ package User;
 
 import java.util.Scanner;
 
-public class Oldman extends User {
+public class Oldman extends User implements UserInput {
+	public Oldman(UserKind kind) {
+		super();
+	}
 	public void getUserInput(Scanner input) {
 		System.out.print("User ID : ");
 		int id = input.nextInt();
@@ -33,5 +36,23 @@ public class Oldman extends User {
 		String phone = input.next();
 		this.setPhone(phone);
 	}
-
+	public void printInfo() {
+		switch(this.kind) {
+		case Man: 
+			skind = "Man";
+			break;
+		case Woman:
+			skind = "Woman";
+			break;
+		case Youngman:
+			skind = "Young";
+			break;
+		case Oldman:
+			skind = "Old";
+			break;
+		default:
+		
+		}
+		System.out.println("name: " + name + "id: "+ id + "email: " + "phone: " + phone);
+	}
 }

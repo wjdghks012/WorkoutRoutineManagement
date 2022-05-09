@@ -2,10 +2,15 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import User.Man;
+import User.Oldman;
 import User.User;
+import User.UserInput;
+import User.UserKind;
+import User.WomanUser;
+import User.Youngman;
 
 public class UserManager { 	
-	ArrayList<User> users = new ArrayList<User>();	
+	ArrayList<UserInput> users = new ArrayList<UserInput>();	
 	Scanner input;	
 	UserManager(Scanner input){
 		this.input= input;
@@ -13,8 +18,8 @@ public class UserManager {
 	
 	public  void addUser() {
 		int kind = 0;
+		UserInput userInput;
 		while (kind !=1 && kind !=4) {
-			User user;	
 		
 		System.out.print("Select User Kind: ");
 		System.out.print("1 Man. ");
@@ -24,28 +29,28 @@ public class UserManager {
 		System.out.print("Select num for User Kind between 1 and 4: ");
 		kind = input.nextInt();
 		if (kind==1) { 
-			user = new Man();
-			user.getUserInput(input);
-			users.add(user);
+			userInput = (UserInput) new Man(UserKind.Man); 
+			userInput.getUserInput(input);
+			users.add(userInput);
 			break;
 			
 		}
 		else if (kind==2) {
-			user = new Man();
-			user.getUserInput(input);
-			users.add(user);
+			userInput = new WomanUser(UserKind.Woman);
+			userInput.getUserInput(input);
+			users.add(userInput);
 			break;
 		}
 		else if (kind==3) {
-				user = new Man();
-				user.getUserInput(input);
-				users.add(user);
+				userInput = new Youngman(UserKind.Youngman);
+				userInput.getUserInput(input);
+				users.add(userInput);
 				break;
 		}
 		else if (kind==4) {
-			user = new Man();
-			user.getUserInput(input);
-			users.add(user);
+			userInput = new Oldman(UserKind.Oldman);
+			userInput.getUserInput(input);
+			users.add(userInput);
 			break;
 		}
 		else {
@@ -82,8 +87,8 @@ public class UserManager {
 	System.out.println("User ID : ");
 	int UserID = input.nextInt();
 	for (int i=0; i<users.size(); i++) {
-		User user = users.get(i);
-		if (user.getId()== UserID) {
+		UserInput userInput = users.get(i);
+		if (userInput.getId()== UserID) {
 			int num = -1;
 			while (num !=5) {
 				System.out.println( "*** User Info Edit Menu *** ");
@@ -97,22 +102,22 @@ public class UserManager {
 				if (num==1 ) {
 					System.out.println(" User ID: ");
 					int id = input.nextInt();
-					user.setId(id);
+					userInput.setId(id);
 				}
 				else if(num==2) {
 					System.out.println(" User Name: ");
 					String name = input.next();
-					user.setName(name);					
+					userInput.setName(name);					
 				}
 				else if(num==3) {
 					System.out.println(" Email address: ");
 					String email = input.next();
-					user.setEmail(email);
+					userInput.setEmail(email);
 				}
 				else if(num==4) {
 					System.out.println(" Phone number: ");
 					String phone = input.next();
-					user.setPhone(phone);
+					userInput.setPhone(phone);
 			}
 				else {
 					continue;				
