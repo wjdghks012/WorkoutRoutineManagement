@@ -2,7 +2,9 @@ package User;
 
 import java.util.Scanner;
 
-public class Youngman extends User implements UserInput {
+import exception.EmailFormatException;
+
+public class Youngman extends User  {
 	public Youngman(UserKind kind) {
 		super();
 	}
@@ -21,39 +23,24 @@ public class Youngman extends User implements UserInput {
 		{
 			System.out.print("Do you have an email address? (Y/N) ");
 			answer = input.next().charAt(0);
-			if (answer== 'y' || answer =='Y') {
-				System.out.println("Email address: ");
-				String email = input.next();	
-				this.setEmail(email);
-			} 
-			else if (answer =='n' || answer == 'N') {
-				this.setEmail(" ");
-			} 
-			else {
-				
+			try {
+				if (answer== 'y' || answer =='Y') {
+					setUserEmail(input); 
+				} 
+				else if (answer =='n' || answer == 'N') {
+					this.setEmail(" ");
+				} 
+				else {
+					
+				}
+			}catch(EmailFormatException e) {
+				System.out.println("Incorrect Email Format. put the e-mail address that contains @ ");
 			}
 		}
-		System.out.print("Protector's phone number : ");
-		String phone = input.next();
-		this.setPhone(phone);
+		setUserPhone(input); 
 	}
 	public void printInfo() {
-		switch(this.kind) {
-		case Man: 
-			skind = "Man";
-			break;
-		case Woman:
-			skind = "Woman";
-			break;
-		case Youngman:
-			skind = "Young";
-			break;
-		case Oldman:
-			skind = "Old";
-			break;
-		default:
-		
-		}
+		String skind = getKindString();
 		System.out.println("name: " + name + "id: "+ id + "email: " + "phone: " + phone);
 	}
 }

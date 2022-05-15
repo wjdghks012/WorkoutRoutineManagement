@@ -2,7 +2,9 @@ package User;
 
 import java.util.Scanner;
 
-public abstract class  User {	
+import exception.EmailFormatException;
+
+public abstract class  User implements UserInput  {	
 	protected UserKind kind = UserKind.Man;
 	protected String name;
 	protected int id;
@@ -57,7 +59,11 @@ public abstract class  User {
 		return email;
 	}
 
-	public void setEmail(String email) {
+	public void setEmail(String email) throws EmailFormatException {
+		if (!email.contains("@") && !email.equals("")) {
+			throw new EmailFormatException();
+		}
+		
 		this.email = email;
 	}
 
@@ -71,5 +77,56 @@ public abstract class  User {
 	String skind = "none";
 	public abstract void printInfo();
 	
+	public void setUserID(Scanner input) {
+		System.out.println(" User ID: ");
+		int id = input.nextInt();
+		this.setId(id);
+		
+	}
+	public void setUserName(Scanner input) {
+		System.out.println(" User Name: ");
+		String name = input.next();
+		this.setName(name);	
+		
+	}
+	public void setUserEmail(Scanner input) {
+		String email="";
+		while(!email.contains("@")) {
+			
+			System.out.println(" Email address: ");
+			email = input.next();
+			try {
+				this.setEmail(email);
+			} catch (EmailFormatException e) {		
+				System.out.println("Incorrect Email Format. put the e-mail address that contains @ ");
+			}
+		}
+	}
+	public void setUserPhone(Scanner input) {
+		System.out.println(" Phone number: ");
+		String phone = input.next();
+		this.setPhone(phone);
+	}
 	
+	public String getKindString() {
+		String skind = "none";
+		switch(this.kind) {
+		case Man: 
+			skind = "Man";
+			break;
+		case Woman:
+			skind = "Woman";
+			break;
+		case Youngman:
+			skind = "Young";
+			break;
+		case Oldman:
+			skind = "Old";
+			break;
+		default:
+		
+		}
+		return skind;
+	
+	}
 }
