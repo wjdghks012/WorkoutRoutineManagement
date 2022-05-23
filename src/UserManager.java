@@ -1,19 +1,24 @@
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
 import User.Man;
 import User.Oldman;
-import User.User;
 import User.UserInput;
 import User.UserKind;
 import User.WomanUser;
 import User.Youngman;
 import exception.EmailFormatException;
 
-public class UserManager { 	
+public class UserManager implements Serializable { 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -1526103906663641581L;
+	
 	ArrayList<UserInput> users = new ArrayList<UserInput>();	
-	Scanner input;	
+	transient Scanner input;	
 	UserManager(Scanner input){
 		this.input= input;
 	}

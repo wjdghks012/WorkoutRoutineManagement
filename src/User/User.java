@@ -1,10 +1,15 @@
 package User;
 
+import java.io.Serializable;
 import java.util.Scanner;
 
 import exception.EmailFormatException;
 
-public abstract class  User implements UserInput  {	
+public abstract class  User implements UserInput, Serializable {	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -8132819895313782277L;
 	protected UserKind kind = UserKind.Man;
 	protected String name;
 	protected int id;
