@@ -1,3 +1,5 @@
+package manager;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.InputMismatchException;
@@ -5,10 +7,12 @@ import java.util.Scanner;
 
 import User.Man;
 import User.Oldman;
+import User.User;
 import User.UserInput;
 import User.UserKind;
 import User.WomanUser;
 import User.Youngman;
+
 import exception.EmailFormatException;
 
 public class UserManager implements Serializable { 	
@@ -156,6 +160,13 @@ public class UserManager implements Serializable {
 		}	
 	}
 
+	public int size() {
+		return users.size();
+	}
+	
+	public UserInput get(int index) {
+		return(User) users.get(index);
+	}
 	public void showEditMenu() {
 		System.out.println( "*** User Info Edit Menu *** ");
 		System.out.println(" 1. Edit ID");				
