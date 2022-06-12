@@ -7,12 +7,19 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.SpringLayout;
 
+import listener.UserAdderCancelListener;
+import listener.UserAdderListener;
+import manager.UserManager;
+
 public class UserAdder extends JPanel {
 	
 	WindowFrame frame;
 	
-	public UserAdder(WindowFrame frame) {
+	UserManager userManager;
+	
+	public UserAdder(WindowFrame frame,UserManager userManager) {
 		this.frame =frame;
+		this.userManager = userManager;
 		
 		JPanel panel = new JPanel();
 		panel.setLayout(new SpringLayout());
@@ -27,6 +34,8 @@ public class UserAdder extends JPanel {
 		JLabel labelName = new JLabel("Name:  ", JLabel.TRAILING);
 		JTextField fieldName = new JTextField(10);
 		labelID.setLabelFor(fieldName);
+		
+		
 		panel.add(labelName);
 		panel.add(fieldName);
 		
@@ -39,11 +48,19 @@ public class UserAdder extends JPanel {
 		JLabel labelPhone = new JLabel("Phone:  ", JLabel.TRAILING);
 		JTextField fieldPhone = new JTextField(10);
 		labelID.setLabelFor(fieldPhone);
+		
+		JButton saveButton = new JButton ("Save");
+		saveButton.addActionListener(new UserAdderListener(fieldID,fieldName,fieldEmail,fieldPhone,userManager));
+	
+		JButton cancelButton = new JButton ("Cancel");
+		cancelButton.addActionListener(new UserAdderCancelListener(frame));
+		
+		
 		panel.add(labelPhone);
 		panel.add(fieldPhone);
 		
-		panel.add(new JButton ("Save"));
-		panel.add(new JButton ("Cancel"));
+		panel.add(saveButton);
+		panel.add(cancelButton);
 		
 		SpringUtilities.makeCompactGrid(panel, 5, 2, 6, 6, 6, 6);
 		

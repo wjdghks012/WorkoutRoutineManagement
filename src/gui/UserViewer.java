@@ -18,11 +18,13 @@ public class UserViewer extends JPanel {
 	
 	UserManager userManager;
 	
-	public UserViewer(WindowFrame frame,UserManager userManager) {
-		this.frame =frame;
+	public UserManager getUserManager() {
+		return userManager;
+	}
+
+	public void setUserManager(UserManager userManager) {
 		this.userManager = userManager;
-		
-		System.out.println("***" + userManager.size()+ "***");
+		this.removeAll();
 		
 		DefaultTableModel model = new DefaultTableModel();
 		model.addColumn("ID");
@@ -44,6 +46,14 @@ public class UserViewer extends JPanel {
 		JScrollPane sp = new JScrollPane(table);
 		
 		this.add(sp); 
+	}
+
+	public UserViewer(WindowFrame frame,UserManager userManager) {
+		this.frame =frame;
+		this.userManager = userManager;
+		
+		System.out.println("***" + userManager.size()+ "***");
+		
 
 	}
 
