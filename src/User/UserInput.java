@@ -11,7 +11,13 @@ public interface UserInput {
 			
 		public void setName(String name);
 		
+		public String getName();
+		
+		public String getEmail();
+		
 		public void setEmail(String email) throws EmailFormatException;
+		
+		public String getPhone();
 		
 		public void setPhone(String phone);
 		
