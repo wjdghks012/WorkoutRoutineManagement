@@ -26,6 +26,15 @@ public class UserManager implements Serializable {
 	UserManager(Scanner input){
 		this.input= input;
 	}
+		
+		public void addUser(String id,String name,String email,String phone ) {
+			UserInput userInput = new Man(UserKind.Man); 
+			userInput.getUserInput(input);
+			users.add(userInput);	
+	}
+		public void addUser(UserInput userInput) {
+			users.add(userInput);	
+	}
 	
 	public  void addUser() {
 		int kind = 0;
@@ -40,7 +49,7 @@ public class UserManager implements Serializable {
 				System.out.print("Select num for User Kind between 1 and 4: ");
 				kind = input.nextInt();
 				if (kind==1) { 
-					userInput = (UserInput) new Man(UserKind.Man); 
+					userInput =  new Man(UserKind.Man); 
 					userInput.getUserInput(input);
 					users.add(userInput);
 					break;
